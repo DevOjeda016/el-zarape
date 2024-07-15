@@ -1,0 +1,73 @@
+/*Varaibles de estilos*/
+:root {
+    --primary-color: #FA4032;
+    --secondary-color: #FA812F;
+    --primary-bg-color: #FEF3E2;
+    --secondary-bg-color: #FAAF08;
+}
+
+/*Botones*/
+.button-create {
+    font-weight: 500;
+    background-color: #33A000;
+    border-radius: 12px;
+    padding: 3px 7px;
+    padding-bottom: 6px;
+    border: none;
+}
+
+.button-create:hover {
+    color: #33A000;
+    background-color: #fff;
+    border: none;
+    outline: 2px solid #33A000;
+    transition: background 0.4s;
+}
+
+
+/*Header*/
+header {
+    min-height: 120px;
+}
+
+.logo {
+    width: 150px;
+    min-width: 100px;
+}
+
+.navegation {
+    padding: 0px;
+}
+
+.navegation__item {
+    list-style-type: none;
+    margin: 0 20px;
+}
+
+.navegation__icon {
+    font-size: 24px;
+    color: #000;
+}
+
+.navegation__icon:hover {
+    font-size: 24px;
+    color: var(--primary-color);
+    transition: color 0.2s;
+}
+
+
+.content {
+    background-color: var(--bg-white);
+}
+
+
+
+.content__element {
+    margin: 0;
+    margin-top: 25px;
+}
+
+.table-head tr th{
+    background-color: var(--secondary-bg-color);
+}
+

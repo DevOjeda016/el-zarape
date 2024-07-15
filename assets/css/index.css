@@ -1,0 +1,23 @@
+/*Varaibles de estilos*/
+:root {
+    --primary-color: #FA4032;
+    --secondary-color: #FA812F;
+    --primary-bg-color: #FEF3E2;
+    --primary-bg-color: #FAAF08;
+    --secondary-bg-color: #FAAF08;
+}
+
+
+/*Estilos de texto*/
+/*Titulos*/
+.title {
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.style-text {
+    color: #fff;
+    font-size: 18px;
+}
+
