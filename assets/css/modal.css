@@ -1,0 +1,74 @@
+/*General style button*/
+.modal-footer__button {
+    letter-spacing: 1px;
+    color: #fff;
+    width: 150px;
+    height: 35px;
+    border-radius: 12px;
+    border: none;
+}
+
+
+.btn-agree {
+    font-weight: 600;
+    background-color: #33A000;
+}
+
+.btn-agree:hover {
+    color: #33A000;
+    background-color: #fff;
+    outline: 2px solid #33A000 !important;
+    transition: background 0.4s;
+}
+
+.btn-agree:active {
+    outline: 2px solid #33A000 !important;
+}
+
+.btn-modify {
+    font-weight:600;
+    background-color: #e5be01;
+}
+
+.btn-modify:hover {
+    color: #e5be01;
+    background-color: #fff;
+    outline: 2px solid #e5be01 !important;
+    transition: background 0.4s;
+}
+
+.btn-modify:active {
+    outline: 2px solid #e5be01 !important;
+}
+
+.btn-clean {
+    font-weight:600;
+    background-color: #1163dd;
+}
+
+.btn-clean:hover {
+    color: #1163dd;
+    background-color: #fff;
+    outline: 2px solid #1163dd !important;
+    transition: background 0.4s;
+}
+
+.btn-clean:active {
+    outline: 2px solid #1163dd !important;
+}
+
+.btn-cancel {
+    font-weight:600;
+    background-color: #df1717;
+}
+
+.btn-cancel:hover {
+    color: #df1717;
+    background-color: #fff;
+    outline: 2px solid #df1717 !important;
+    transition: background 0.4s;
+}
+
+.btn-cancel:active {
+    outline: 2px solid #df1717 !important;
+}
