@@ -27,18 +27,18 @@
 
 .btn-modify {
     font-weight:600;
-    background-color: #e5be01;
+    background-color: #FAAF08;
 }
 
 .btn-modify:hover {
-    color: #e5be01;
+    color: #FAAF08;
     background-color: #fff;
-    outline: 2px solid #e5be01 !important;
+    outline: 2px solid #FAAF08 !important;
     transition: background 0.4s;
 }
 
 .btn-modify:active {
-    outline: 2px solid #e5be01 !important;
+    outline: 2px solid #FAAF08 !important;
 }
 
 .btn-clean {
@@ -57,18 +57,41 @@
     outline: 2px solid #1163dd !important;
 }
 
-.btn-cancel {
+.btn-delete {
     font-weight:600;
     background-color: #df1717;
 }
 
-.btn-cancel:hover {
+.btn-delete:hover {
     color: #df1717;
     background-color: #fff;
     outline: 2px solid #df1717 !important;
     transition: background 0.4s;
 }
 
-.btn-cancel:active {
+.btn-delete:active {
     outline: 2px solid #df1717 !important;
+}
+
+.btn-cancel {
+    font-weight:600;
+    background-color: #757575;
+}
+
+.btn-cancel:hover {
+    color: #757575;
+    background-color: #fff;
+    outline: 2px solid #757575 !important;
+    transition: background 0.4s;
+}
+
+.btn-cancel:active {
+    outline: 2px solid #757575 !important;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
