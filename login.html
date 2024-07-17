@@ -1,19 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/login.css">
-    <title>Document</title>
+    <title>Iniciar Sesión - El Zarape</title>
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
+    <style>
+        .container-login {
+            display: flex;
+            height: 100vh;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .container-login .left {
+            background-color: #fdf1e5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+        }
+
+        .container-login .left img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container-login .right {
+            padding: 40px;
+            width: 50%;
+        }
+
+        .container-login .right h2 {
+            color: #ef4823;
+        }
+
+        .container-login .btn-primary {
+            background-color: #ef4823;
+            border-color: #ef4823;
+        }
+
+        .container-login .btn-secondary {
+            background-color: #ff7a40;
+            border-color: #ff7a40;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container-login .left {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container-fluid">
-        <div class="container-logo">
-            <img class="logo__image"src="assets/img/logo-el-zarape.png" alt="El zarape">
+    <div class="container-fluid container-login">
+        <div class="left">
+            <img src="assets/img/logo-el-zarape.png" alt="El Zarape Logo">
         </div>
-        <div class="container-form">
-            
+        <div class="right d-flex flex-column justify-content-center">
+            <div class="container">
+                <h2>Iniciar Sesión</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" class="form-control" id="username"
+                            placeholder="usuario o correo electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="********">
+                    </div>
+                    <div class="form-group">
+                        <a href="#">Olvidó su contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    <button type="button" class="btn btn-secondary btn-block">Regresar al inicio</button>
+                </form>
+            </div>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
 </body>
+
 </html>
