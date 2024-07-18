@@ -98,3 +98,7 @@ header {
     color: var(--secondary-color);
     transition: .2s;
 }
+
+.table-row:hover {
+    cursor: pointer;
+}

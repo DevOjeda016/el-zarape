@@ -32,8 +32,6 @@
         <div class="content__element container-button container-fluid d-flex justify-content-center">
             <button class="button-create style-text" data-bs-target="#modal-create" data-bs-toggle="modal">Crear nuevo
                 registro</button>
-            <button class="button-create style-text" data-bs-target="#modal-update" data-bs-toggle="modal">Boton
-                temporal modificar</button>
         </div>
         <div class="content__element container-fluid">
             <div class="container-table table-responsive">
@@ -41,116 +39,15 @@
                     <thead class="table-head">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Primero</th>
-                            <th scope="col">Último</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Estatus</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
+                    <tbody id="table-bebida">
                     </tbody>
                 </table>
 
@@ -170,31 +67,35 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="name-drink" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name-drink">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="description-drink" class="col-for">Descripción</label>
+                            <input type="text" class="form-control" id="description-drink">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label class="form-label" for="category-drink">Categoria</label>
+                            <select class="form-select form-select-sm p-2" id="category-drink">
+                                <option value="0">Selecciona una opcion...</option>
+                                <option value="1">Jugos</option>
+                                <option value="2">Refrescos</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="price-drink" class="col-form-label">Precio</label>
+                            <input type="number" class="form-control" id="price-drink">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="image-drink" class="col-form-label">Imagen</label>
+                            <input type="file" class="form-control" id="image-drink">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
-                    <button type="button" class="modal-footer__button btn-clean">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarCreate();">Limpiar</button>
                     <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
                         data-bs-toggle="modal">Registrar</button>
                 </div>
@@ -216,10 +117,10 @@
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
                         <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
-                            data-bs-toggle="modal">Sí</button>
+                            data-bs-toggle="modal" onclick="agregarProducto();">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-create"
                             data-bs-toggle="modal">No</button>
-                        
+
                     </div>
                 </div>
             </div>
@@ -232,29 +133,41 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Actualizar Registro</h1>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="name-drink" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name-drink-update">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="description-drink" class="col-form-label">Descripción</label>
+                            <input type="text" class="form-control" id="description-drink-update">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label class="form-label" for="category-drink-update">Categoria</label>
+                            <select class="form-select form-select-sm p-2" id="category-drink-update">
+                                <option value="0">Selecciona una opcion...</option>
+                                <option value="1">Jugos</option>
+                                <option value="2">Refrescos</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="price-drink" class="col-form-label">Precio</label>
+                            <input type="number" class="form-control" id="price-drink-update">
                         </div>
                         <div class="mb-3">
-                            <label for="input1" class="col-form-label">Input 1:</label>
-                            <input type="text" class="form-control" id="input1">
+                            <label for="image-drink" class="col-form-label">Imagen</label>
+                            <input type="file" class="form-control" id="image-drink-update">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="status-drink-update">Estatus</label>
+                            <select class="form-select form-select-sm p-2" id="status-drink-update">
+                                <option value="0">Selecciona una opcion...</option>
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option>
+                            </select>
                         </div>
                     </form>
                 </div>
@@ -262,8 +175,8 @@
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
                     <button type="button" class="modal-footer__button btn-delete" data-bs-target="#modal-preview-delete"
-                    data-bs-toggle="modal">Eliminar</button>
-                    <button type="button" class="modal-footer__button btn-clean">Limpiar</button>
+                        data-bs-toggle="modal">Eliminar</button>
+                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarUpdate();">Limpiar</button>
                     <button class="modal-footer__button btn-modify" data-bs-target="#modal-preview-update"
                         data-bs-toggle="modal">Modificar</button>
                 </div>
@@ -288,7 +201,7 @@
                             data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
-                        
+
                     </div>
                 </div>
             </div>
@@ -313,15 +226,15 @@
                             data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--JS Bootstrap-->
-    <script src="../../../../../assets/js/bootstrap.min.js"></script>
-    
+    <script src="../../../../assets/js/bootstrap.min.js"></script>
+    <script src="../controller/bebidas.js"></script>
 </body>
 
 </html>
