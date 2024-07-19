@@ -1,0 +1,122 @@
+[
+    { 
+        "nombre": "Café Americano", 
+        "descripcion": "Un café que consiste en partes exactamente iguales de espresso y agua.", 
+        "foto": "burritos.jpg", 
+        "precio": 30.0, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Café", 
+        "descripcion": "Bebida caliente de café.", 
+        "foto": "cafe.jpg", 
+        "precio": 15.0, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Capuchino", 
+        "descripcion": "Bebida nacida en Italia, preparada con café expreso y leche montada con vapor para darle cremosidad.", 
+        "foto": "carne_asada.jpg", 
+        "precio": 80.0, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Chocolate Caliente", 
+        "descripcion": "Bebida caliente de chocolate.", 
+        "foto": "chocolate_agua.jpg", 
+        "precio": 20.0, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Chocolate", 
+        "descripcion": "Dulce de chocolate.", 
+        "foto": "chocolate.jpg", 
+        "precio": 10.0, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Jugo de lima", 
+        "descripcion": "El jugo de lima, con su frescura, es una excelente opción para calmar el calor.", 
+        "foto": "enchiladas.jpg", 
+        "precio": 50.0, 
+        "categoria": "1", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Coca Cola", 
+        "descripcion": "Encuentra la Coca-Cola ideal para cada ocasión y disfruta de su sabor único.", 
+        "foto": "ensalada.jpg", 
+        "precio": 25.0, 
+        "categoria": "2", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Limonada", 
+        "descripcion": "Bebida de elaboración usualmente casera, a base de limón, agua y azúcar.", 
+        "foto": "flautas.jpg", 
+        "precio": 35.0, 
+        "categoria": "4", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Agua mineral", 
+        "descripcion": "Es un producto natural y saludable, que hidrata, aporta nutrientes y minerales esenciales.", 
+        "foto": "guacamole.jpg", 
+        "precio": 25.0, 
+        "categoria": "4", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Jugo de naranja", 
+        "descripcion": "Frutas en forma de líquido obtenido de exprimir el interior de las naranjas.", 
+        "foto": "menudo.jpg", 
+        "precio": 40.0, 
+        "categoria": "1", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Piña colada", 
+        "descripcion": "La dulce mezcla de crema de coco, jugo de piña, ron blanco y hielo.", 
+        "foto": "nachos.jpg", 
+        "precio": 30.0, 
+        "categoria": "1", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Vino tinto", 
+        "descripcion": "Bebida alcohólica que surge a partir de la fermentación de uvas tintas.", 
+        "foto": "pozole.jpg", 
+        "precio": 50.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Vino blanco", 
+        "descripcion": "Bebida producida mediante la fermentación alcohólica de diferentes tipos de uvas blancas.", 
+        "foto": "tacos_dorados.jpg", 
+        "precio": 30.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Corona clara", 
+        "descripcion": "Tiene un característico color dorado con espuma blanca, acompañados por un sabor ligero y refrescante.", 
+        "foto": "tamales.jpg", 
+        "precio": 20.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Corona oscura", 
+        "descripcion": "Cerveza clara, color dorado, muy ligera y refrescante.", 
+        "foto": "tortas.jpg", 
+        "precio": 35.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    }
+]

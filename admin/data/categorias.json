@@ -1,0 +1,46 @@
+{
+    "bebidas": [
+        {
+            "id": 1,
+            "categoria": "Jugos"
+        },
+        {
+            "id": 2,
+            "categoria": "Refrescos"
+        },
+        {
+            "id": 3,
+            "categoria": "Bebidas calientes"
+        },
+        {
+            "id": 4,
+            "categoria": "Bebidas frias"
+        },
+        {
+            "id": 5,
+            "categoria": "Bebidas embriagantes"
+        }
+    ],
+    "alimentos": [
+        {
+            "id": 1,
+            "categoria": "Desayuno"
+        },
+        {
+            "id": 2,
+            "categoria": "Refrescos"
+        },
+        {
+            "id": 3,
+            "categoria": "Refrescos"
+        },
+        {
+            "id": 4,
+            "categoria": "Refrescos"
+        },
+        {
+            "id": 5,
+            "categoria": "Refrescos"
+        }
+    ]
+}
