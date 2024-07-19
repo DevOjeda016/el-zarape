@@ -44,6 +44,7 @@ function selectProducto(index) {
     document.getElementById("category-drink-update").value = producto.categoria;
     document.getElementById("price-drink-update").value = producto.precio;
     document.getElementById("status-drink-update").value = producto.estatus;
+    indexProductosSeleccionados = index;
 }
 
 
@@ -106,6 +107,28 @@ function agregarProducto() {
         alert("Hay campos obligatorios para agregar el producto");
     }
 }
+
+function modificarProducto() {
+    let nombre, descripcion, precio, categoria;
+    // tomar los datos del formulario en variables locales
+    nombre = document.getElementById("name-drink-update").value;
+    descripcion = document.getElementById("description-drink-update").value;
+    categoria = document.getElementById("category-drink-update").value;
+    precio = document.getElementById("price-drink-update").value;
+    estatus = document.getElementById("status-drink-update").value;
+    foto = obtenerNombreFoto();
+
+    selectProducto(indexProductosSeleccionados);
+    obj[indexProductosSeleccionados].nombre = nombre;
+    obj[indexProductosSeleccionados].descripcion = descripcion;
+    obj[indexProductosSeleccionados].precio = precio;
+    obj[indexProductosSeleccionados].tipo = categoria;
+    obj[indexProductosSeleccionados].estatus = "Activo";
+    obj[indexProductosSeleccionados].foto = foto;
+    actualizaTabla();
+    selectProducto(indexProductosSeleccionados);
+}
+
 /*
 // selección del producto de acuerdo al índice del arreglo
 // llena los campos del formulario
