@@ -156,12 +156,12 @@ function modificarProducto() {
     foto = obtenerNombreFoto();
 
     selectProducto(indexProductosSeleccionados);
-    obj[indexProductosSeleccionados].nombre = nombre;
-    obj[indexProductosSeleccionados].descripcion = descripcion;
-    obj[indexProductosSeleccionados].precio = precio;
-    obj[indexProductosSeleccionados].tipo = categoria;
-    obj[indexProductosSeleccionados].estatus = "Activo";
-    obj[indexProductosSeleccionados].foto = foto;
+    bebidas[indexProductosSeleccionados].nombre = nombre;
+    bebidas[indexProductosSeleccionados].descripcion = descripcion;
+    bebidas[indexProductosSeleccionados].precio = precio;
+    bebidas[indexProductosSeleccionados].tipo = categoria;
+    bebidas[indexProductosSeleccionados].estatus = "Activo";
+    bebidas[indexProductosSeleccionados].foto = foto;
     actualizaTabla();
     selectProducto(indexProductosSeleccionados);
 }
