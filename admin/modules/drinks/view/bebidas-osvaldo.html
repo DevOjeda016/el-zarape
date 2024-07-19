@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +17,10 @@
                     src="../../../../assets/img/logo-el-zarape.png" alt="Logotipo El zarape"></a></div>
         <div class="container-navigation d-flex ">
             <ul class="navegation d-flex align-items-center">
-                <li class="navegation__item"><a class="navegation__link" href="#"><i
+                <li class="navegation_item"><a class="navegation_link" href="#"><i
                             class="navegation__icon fa-regular fa-user"></i></a></li>
                 </li>
-                <li class="navegation__item"><a class="navegation__link" href="#"><i
+                <li class="navegation_item"><a class="navegation_link" href="#"><i
                             class="navegation__icon fa-solid fa-right-from-bracket"></i></a></li>
                 </li>
             </ul>
@@ -72,16 +70,12 @@
                             <input type="text" class="form-control" id="name-drink">
                         </div>
                         <div class="mb-3">
-                            <label for="description-drink" class="col-for">Descripción</label>
+                            <label for="description-drink" class="col-form-label">Descripción</label>
                             <input type="text" class="form-control" id="description-drink">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="category-drink">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink">
-                                <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Jugos</option>
-                                <option value="2">Refrescos</option>
-                            </select>
+                            <label for="category-drink" class="col-form-label">Categoria</label>
+                            <input type="text" class="form-control" id="category-drink">
                         </div>
                         <div class="mb-3">
                             <label for="price-drink" class="col-form-label">Precio</label>
@@ -96,7 +90,7 @@
                 <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
-                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarCreate();">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-clean">Limpiar</button>
                     <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
                         data-bs-toggle="modal">Registrar</button>
                 </div>
@@ -118,7 +112,7 @@
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
                         <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
-                            data-bs-toggle="modal" onclick="agregarProducto();">Sí</button>
+                            data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-create"
                             data-bs-toggle="modal">No</button>
 
@@ -148,13 +142,10 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="category-drink-update">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink-update">
+                            <select class="form-select form-select-sm w-50 p-2" id="category-drink-update">
                                 <option value="0">Selecciona una opcion...</option>
                                 <option value="1">Jugos</option>
                                 <option value="2">Refrescos</option>
-                                <option value="3">Bebidas calientes</option>
-                                <option value="4">Bebidas frias</option>
-                                <option value="5">Bebidas embriagantes</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -167,7 +158,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="status-drink-update">Estatus</label>
-                            <select class="form-select form-select-sm p-2" id="status-drink-update">
+                            <select class="form-select form-select-sm w-50 p-2" id="status-drink-update">
                                 <option value="0">Selecciona una opcion...</option>
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option>
@@ -180,7 +171,7 @@
                         aria-label="Close">Cancelar</button>
                     <button type="button" class="modal-footer__button btn-delete" data-bs-target="#modal-preview-delete"
                         data-bs-toggle="modal">Eliminar</button>
-                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarUpdate();">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-clean">Limpiar</button>
                     <button class="modal-footer__button btn-modify" data-bs-target="#modal-preview-update"
                         data-bs-toggle="modal">Modificar</button>
                 </div>
@@ -202,7 +193,7 @@
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
                         <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview-update"
-                            data-bs-toggle="modal" onclick="modificarProducto();">Sí</button>
+                            data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
 
@@ -226,8 +217,8 @@
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
-                        <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview-delete "
-                        data-bs-toggle="modal" onclick="eliminarProducto();">Sí</button>
+                        <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview-update"
+                            data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
 
@@ -236,7 +227,6 @@
             </div>
         </div>
     </div>
-    
     <!--JS Bootstrap-->
     <script src="../../../../assets/js/bootstrap.min.js"></script>
     <script src="../controller/bebidas.js"></script>

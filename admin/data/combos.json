@@ -1,0 +1,50 @@
+[
+    { 
+        "nombre": "Café Americano, tamales", 
+        "descripcion": "Un café que consiste en partes exactamente iguales de espresso y agua.", 
+        "foto": "burritos.jpg", 
+        "precio": 36.50, 
+        "categoria": "3", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Limonada, Quesadillas", 
+        "descripcion": "Bebida de elaboración usualmente casera, a base de limón, agua y azúcar.", 
+        "foto": "flautas.jpg", 
+        "precio": 40.0, 
+        "categoria": "4", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Coca Cola, Tacos al pastor", 
+        "descripcion": "Encuentra la Coca-Cola ideal para cada ocasión y disfruta de su sabor único.", 
+        "foto": "ensalada.jpg", 
+        "precio": 33.0, 
+        "categoria": "2", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Piña colada, Sopes", 
+        "descripcion": "La dulce mezcla de crema de coco, jugo de piña, ron blanco y hielo.", 
+        "foto": "nachos.jpg", 
+        "precio": 40.0, 
+        "categoria": "1", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Vino tinto, Cochinita Pibil", 
+        "descripcion": "Bebida alcohólica que surge a partir de la fermentación de uvas tintas.", 
+        "foto": "pozole.jpg", 
+        "precio": 50.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    },
+    { 
+        "nombre": "Corona oscura, Chilaquiles", 
+        "descripcion": "Cerveza clara, color dorado, muy ligera y refrescante.", 
+        "foto": "tortas.jpg", 
+        "precio": 35.0, 
+        "categoria": "5", 
+        "estatus": "1" 
+    }
+]
