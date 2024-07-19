@@ -5,23 +5,23 @@
         "foto": "burritos.jpg",
         "precio": 30.0,
         "categoria": "1",
-        "estatus": "1"
+        "estatus": "2"
     },
     {
         "nombre": "Café",
         "descripcion": "Bebida caliente de café",
         "foto": "cafe.jpg",
         "precio": 15.0,
-        "categoria": "Bebida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "2"
     },
     {
         "nombre": "Carne Asada",
         "descripcion": "Carne de res a la parrilla",
         "foto": "carne_asada.jpg",
         "precio": 80.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Chocolate Caliente",
@@ -29,46 +29,46 @@
         "foto": "chocolate_agua.jpg",
         "precio": 20.0,
         "categoria": "Bebida",
-        "estatus": "Activo"
+        "estatus": "1"
     },
     {
         "nombre": "Chocolate",
         "descripcion": "Dulce de chocolate",
         "foto": "chocolate.jpg",
         "precio": 10.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Enchiladas",
         "descripcion": "Tortillas rellenas de pollo con salsa",
         "foto": "enchiladas.jpg",
         "precio": 50.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Ensalada",
         "descripcion": "Mezcla de verduras frescas",
         "foto": "ensalada.jpg",
         "precio": 25.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Flautas",
         "descripcion": "Tortillas rellenas de carne y fritas",
         "foto": "flautas.jpg",
         "precio": 35.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Guacamole",
         "descripcion": "Puré de aguacate con tomate, cebolla y cilantro",
         "foto": "guacamole.jpg",
         "precio": 25.0,
-        "categoria": "Comida",
+        "categoria": "1",
         "estatus": "0"
     },
     {
@@ -76,47 +76,47 @@
         "descripcion": "Sopa tradicional de pancita",
         "foto": "menudo.jpg",
         "precio": 40.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Nachos",
         "descripcion": "Totopos con queso y jalapeños",
         "foto": "nachos.jpg",
         "precio": 30.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "2"
     },
     {
         "nombre": "Pozole",
         "descripcion": "Sopa de maíz y carne",
         "foto": "pozole.jpg",
         "precio": 50.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "2",
+        "estatus": "1"
     },
     {
         "nombre": "Tacos Dorados",
         "descripcion": "Tortillas rellenas de carne y fritas",
         "foto": "tacos_dorados.jpg",
         "precio": 30.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "2"
     },
     {
         "nombre": "Tamales",
         "descripcion": "Masa de maíz rellena de carne o dulce",
         "foto": "tamales.jpg",
         "precio": 20.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     },
     {
         "nombre": "Tortas",
         "descripcion": "Sándwich mexicano con varios ingredientes",
         "foto": "tortas.jpg",
         "precio": 35.0,
-        "categoria": "Comida",
-        "estatus": "Activo"
+        "categoria": "1",
+        "estatus": "1"
     }
 ]

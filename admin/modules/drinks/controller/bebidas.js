@@ -1,44 +1,80 @@
-let obj = []; // Arreglo que se llenará de objetos JSON
+let bebidas = []; // Arreglo que se llenará de bebidasetos JSON
+let categorias = [];
+let estatus = [];
 let indexProductosSeleccionados;
 
 
-fetch("http://127.0.0.1:5500/admin/modules/drinks/controller/bebidas.json")
+fetch("http://127.0.0.1:5500/admin/data/bebidas.json")
     .then((response) => {
         return response.json();
     })
     .then(function (jasondata) {
-        obj = jasondata;
-        console.log(obj);
+        bebidas = jasondata;
+        console.log(typeof bebidas, bebidas);
+        actualizaTabla();
+    });
+
+fetch("http://127.0.0.1:5500/admin/data/categorias.json")
+    .then((response) => {
+        return response.json();
+    })
+    .then(function (jasondata) {
+        categorias = jasondata;
+        console.log(typeof categorias, categorias);
+        actualizaTabla();
+    });
+
+fetch("http://127.0.0.1:5500/admin/data/status.json")
+    .then((response) => {
+        return response.json();
+    })
+    .then(function (jasondata) {
+        estatus = jasondata;
+        console.log(typeof estatus, estatus);
         actualizaTabla();
     });
 
 
 
-
-
 function actualizaTabla() {
     let cuerpo = "";
-    obj.forEach(function (elemento) {
+    let  categoria;
+    let status;
+    bebidas.forEach(function (elemento) {
+        for (let i = 0; i < categorias.length; i++) {
+            if(categorias[i].id == elemento.categoria) {
+                categoria = categorias[i].categoria;
+                break;
+            }
+        }
+
+        for (let i = 0; i < estatus.length; i++) {
+            if(estatus[i].id == elemento.estatus) {
+                status = estatus[i].status;
+                break;
+            }
+        }
+
         let registro = '<tr>' +
-            '<tr class="table-row" data-bs-target="#modal-update" data-bs-toggle="modal" onclick="selectProducto(' + obj.indexOf(elemento) + ');">' +
-            '<td>' + Number(obj.indexOf(elemento) + 1) + '</td>' +
+            '<tr class="table-row" data-bs-target="#modal-update" data-bs-toggle="modal" onclick="selectProducto(' + bebidas.indexOf(elemento) + ');">' +
+            '<td>' + Number(bebidas.indexOf(elemento) + 1) + '</td>' +
             '<td>' + elemento.nombre + '</td>' +
             '<td>' + elemento.descripcion + '</td>' +
-            '<td>' + elemento.categoria + '</td>' +
+            '<td>' + categoria + '</td>' +
             '<td>' + elemento.precio + '</td>' +
             '<td><img src="' + elemento.foto + '" width="100"></td>' +
-            '<td>' + elemento.estatus + '</td>' +
+            '<td>' + status + '</td>' +
             '</tr>';
         cuerpo += registro;
     });
     document.getElementById("table-bebida").innerHTML = cuerpo;
 }
-    
+
 
 
 // Función para seleccionar un producto y llenar el modal de actualización
 function selectProducto(index) {
-    let producto = obj[index];
+    let producto = bebidas[index];
     document.getElementById("name-drink-update").value = producto.nombre;
     document.getElementById("description-drink-update").value = producto.descripcion;
     document.getElementById("category-drink-update").value = producto.categoria;
@@ -84,17 +120,17 @@ function agregarProducto() {
 
 
     if (nombre != "" && descripcion != "" && precio != "" && foto != "") {
-        // generar un nuevo objeto y le asigno las variables locales
-        let newProd = {}; // creamos un objeto
+        // generar un nuevo bebidaseto y le asigno las variables locales
+        let newProd = {}; // creamos un bebidaseto
         newProd.nombre = nombre;
         newProd.descripcion = descripcion;
         newProd.precio = precio;
         newProd.categoria = categoria;
         newProd.foto = foto;
         newProd.estatus = "1";
-        obj.push(newProd); // insertamos el nuevo producto al arreglo de objetos
+        bebidas.push(newProd); // insertamos el nuevo producto al arreglo de bebidasetos
 
-        let jsonData = JSON.stringify(obj); // le asigno formato de comillas
+        let jsonData = JSON.stringify(bebidas); // le asigno formato de comillas
 
         console.log(jsonData);
         console.log(typeof (jsonData));
@@ -106,21 +142,39 @@ function agregarProducto() {
         alert("Hay campos obligatorios para agregar el producto");
     }
 }
+
+
+//eXPRTAR
+
+
+function eliminarProducto() {
+    let nuevoArreglo = [];
+    let elementoSeleccionado = bebidas.productos[indexProductosSeleccionados];
+    bebidas.productos.forEach(function (elemento) {
+        if (elemento != elementoSeleccionado) {
+            nuevoArreglo.push(elemento);
+        }
+    });
+    bebidas.productos = nuevoArreglo;
+    limpiar();
+    actualizaTabla();
+}
+
 /*
 // selección del producto de acuerdo al índice del arreglo
 // llena los campos del formulario
 function selectProducto(index) {
-    console.log(obj[index].categoria)
-    document.getElementById("name").value = obj[index].nombre;
-    document.getElementById("description").value = obj[index].descripcion;
-    document.getElementById("price").value = obj[index].precio;
-    //document.getElementById("catogory").value = obj[index].categoria;
+    console.log(bebidas[index].categoria)
+    document.getElementById("name").value = bebidas[index].nombre;
+    document.getElementById("description").value = bebidas[index].descripcion;
+    document.getElementById("price").value = bebidas[index].precio;
+    //document.getElementById("catogory").value = bebidas[index].categoria;
     let elemento = document.getElementById('idDelElemento');
     if (elemento) {
-        elemento.value = obj[index].categoria;
+        elemento.value = bebidas[index].categoria;
     }
 
-    //document.getElementById("photo").src = ruta + obj.productos[index].foto;
+    //document.getElementById("photo").src = ruta + bebidas.productos[index].foto;
     //document.getElementById("txtFotoRuta").value = "";
     indexProductosSeleccionados = index;
 }
@@ -158,17 +212,17 @@ function agregarProducto() {
 
 
     if (nombre != "" && descripcion != "" && precio != "" && tipo != "" && foto != "" && fotoNueva != "") {
-        // generar un nuevo objeto y le asigno las variables locales
-        let newProd = {}; // creamos un objeto
+        // generar un nuevo bebidaseto y le asigno las variables locales
+        let newProd = {}; // creamos un bebidaseto
         newProd.nombre = nombre;
         newProd.descripcion = descripcion;
         newProd.precio = precio;
         newProd.tipo = tipo;
         newProd.foto = fotoNueva;
         newProd.estatus = "Activo";
-        obj.productos.push(newProd); // insertamos el nuevo producto al arreglo de objetos
+        bebidas.productos.push(newProd); // insertamos el nuevo producto al arreglo de bebidasetos
 
-        let jsonData = JSON.stringify(obj.productos); // le asigno formato de comillas
+        let jsonData = JSON.stringify(bebidas.productos); // le asigno formato de comillas
 
         console.log(jsonData);
         console.log(typeof (jsonData));
@@ -190,29 +244,29 @@ function modificarProducto() {
     let foto = obtenerNombreFoto()
 
     selectProducto(indexProductosSeleccionados);
-    obj.productos[indexProductosSeleccionados].nombre = nombre;
-    obj.productos[indexProductosSeleccionados].descripcion = descripcion;
-    obj.productos[indexProductosSeleccionados].precio = precio;
-    obj.productos[indexProductosSeleccionados].tipo = tipo;
-    obj.productos[indexProductosSeleccionados].estatus = "Activo";
-    obj.productos[indexProductosSeleccionados].foto = foto;
+    bebidas.productos[indexProductosSeleccionados].nombre = nombre;
+    bebidas.productos[indexProductosSeleccionados].descripcion = descripcion;
+    bebidas.productos[indexProductosSeleccionados].precio = precio;
+    bebidas.productos[indexProductosSeleccionados].tipo = tipo;
+    bebidas.productos[indexProductosSeleccionados].estatus = "Activo";
+    bebidas.productos[indexProductosSeleccionados].foto = foto;
     actualizaTabla();
     selectProducto(indexProductosSeleccionados);
 }
 
 function eliminarProducto() {
     let nuevoArreglo = [];
-    let elementoSeleccionado = obj.productos[indexProductosSeleccionados];
-    obj.productos.forEach(function (elemento) {
+    let elementoSeleccionado = bebidas.productos[indexProductosSeleccionados];
+    bebidas.productos.forEach(function (elemento) {
         if (elemento != elementoSeleccionado) {
             nuevoArreglo.push(elemento);
         }
     });
-    obj.productos = nuevoArreglo;
+    bebidas.productos = nuevoArreglo;
     limpiar();
     actualizaTabla();
 }
 
 
-//It iterate each object to show on table body
+//It iterate each bebidasect to show on table body
 actualizaTabla();*/
