@@ -53,7 +53,7 @@ function actualizaTabla() {
             '<td>' + elemento.descripcion + '</td>' +
             '<td>' + categoria + '</td>' +
             '<td>' + elemento.precio + '</td>' +
-            '<td><img src="../../../../assets/img/' + elemento.foto + '" width="100"></td>' +
+            '<td><img src="' + elemento.foto + '" width="100"></td>' +
             '<td>' + status + '</td>' +
             '</tr>';
         cuerpo += registro;
@@ -89,24 +89,79 @@ function limpiarCreate() {
     document.getElementById("image-drink").value = "";
 }
 
-function obtenerNombreFoto() {
-    let nombreFoto = document.getElementById("image-drink-update").value;
-    nombreFoto = nombreFoto.substring(nombreFoto.lastIndexOf("\\") + 1);
-    return nombreFoto;
+
+
+function obtenerImagenBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        // Evento cuando la lectura se completa
+        reader.onload = function (e) {
+            resolve(e.target.result); // Retorna la cadena base64
+        };
+
+        // Evento en caso de error
+        reader.onerror = function (error) {
+            reject(error);
+        };
+
+        // Leer el archivo como una URL de datos (data URL)
+        reader.readAsDataURL(file);
+    });
 }
 
-function obtenerNombreFotoNueva() {
-    let nombreFoto = document.getElementById("image-drink").value;
-    nombreFoto = nombreFoto.substring(nombreFoto.lastIndexOf("\\") + 1);
-    return nombreFoto;
+async function modificarProducto() {
+    let nombre = document.getElementById("name-drink-update").value;
+    let descripcion = document.getElementById("description-drink-update").value;
+    let categoria = document.getElementById("category-drink-update").value;
+    let precio = document.getElementById("price-drink-update").value;
+    let estatus = document.getElementById("status-drink-update").value;
+    let imageDrinkUpdate = document.getElementById("image-drink-update");
+
+    // Acceder al archivo seleccionado
+    let file = imageDrinkUpdate.files[0];
+    let foto = null;
+
+    if (file) {
+        try {
+            // Convertir la imagen a base64
+            foto = await obtenerImagenBase64(file);
+        } catch (error) {
+            console.error('Error al obtener la imagen en base64:', error);
+        }
+    }
+
+    selectProducto(indexProductosSeleccionados);
+    bebidas[indexProductosSeleccionados].nombre = nombre;
+    bebidas[indexProductosSeleccionados].descripcion = descripcion;
+    bebidas[indexProductosSeleccionados].precio = precio;
+    bebidas[indexProductosSeleccionados].tipo = categoria;
+    bebidas[indexProductosSeleccionados].estatus = estatus;
+    bebidas[indexProductosSeleccionados].foto = foto || bebidas[indexProductosSeleccionados].foto;
+
+    actualizaTabla();
+    selectProducto(indexProductosSeleccionados);
 }
 
-function agregarProducto() {
+
+async function agregarProducto() {
     let nombre = document.getElementById("name-drink").value;
     let descripcion = document.getElementById("description-drink").value;
     let categoria = document.getElementById("category-drink").value;
     let precio = document.getElementById("price-drink").value;
-    let foto = obtenerNombreFotoNueva();
+    let imageDrinkCreate = document.getElementById("image-drink");
+    // Acceder al archivo seleccionado
+    let file = imageDrinkCreate.files[0];
+    let foto = null;
+
+    if (file) {
+        try {
+            // Convertir la imagen a base64
+            foto = await obtenerImagenBase64(file);
+        } catch (error) {
+            console.error('Error al obtener la imagen en base64:', error);
+        }
+    }
 
     console.log(nombre, descripcion, categoria, precio, foto);
 
@@ -129,13 +184,45 @@ function agregarProducto() {
     }
 }
 
-function modificarProducto() {
+function obtenerImagenBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        // Evento cuando la lectura se completa
+        reader.onload = function (e) {
+            resolve(e.target.result); // Retorna la cadena base64
+        };
+
+        // Evento en caso de error
+        reader.onerror = function (error) {
+            reject(error);
+        };
+
+        // Leer el archivo como una URL de datos (data URL)
+        reader.readAsDataURL(file);
+    });
+}
+
+async function modificarProducto() {
     let nombre = document.getElementById("name-drink-update").value;
     let descripcion = document.getElementById("description-drink-update").value;
     let categoria = document.getElementById("category-drink-update").value;
     let precio = document.getElementById("price-drink-update").value;
     let estatus = document.getElementById("status-drink-update").value;
-    let foto = obtenerNombreFoto();
+    let imageDrinkUpdate = document.getElementById("image-drink-update");
+
+    // Acceder al archivo seleccionado
+    let file = imageDrinkUpdate.files[0];
+    let foto = null;
+
+    if (file) {
+        try {
+            // Convertir la imagen a base64
+            foto = await obtenerImagenBase64(file);
+        } catch (error) {
+            console.error('Error al obtener la imagen en base64:', error);
+        }
+    }
 
     selectProducto(indexProductosSeleccionados);
     bebidas[indexProductosSeleccionados].nombre = nombre;
@@ -143,12 +230,8 @@ function modificarProducto() {
     bebidas[indexProductosSeleccionados].precio = precio;
     bebidas[indexProductosSeleccionados].tipo = categoria;
     bebidas[indexProductosSeleccionados].estatus = estatus;
-    if (!foto) {
-        bebidas[indexProductosSeleccionados].foto = bebidas.foto;
-    } else {
-        bebidas[indexProductosSeleccionados].foto = foto;
-    }
-    
+    bebidas[indexProductosSeleccionados].foto = foto || bebidas[indexProductosSeleccionados].foto;
+
     actualizaTabla();
     selectProducto(indexProductosSeleccionados);
 }

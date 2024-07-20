@@ -24,23 +24,35 @@
     "alimentos": [
         {
             "id": 1,
-            "categoria": "Desayuno"
+            "categoria": "Entradas (Antojitos)"
         },
         {
             "id": 2,
-            "categoria": "Refrescos"
+            "categoria": "Sopas y Caldos"
         },
         {
             "id": 3,
-            "categoria": "Refrescos"
+            "categoria": "Tacos"
         },
         {
             "id": 4,
-            "categoria": "Refrescos"
+            "categoria": "Platillos Principales"
         },
         {
             "id": 5,
-            "categoria": "Refrescos"
+            "categoria": "Mariscos"
+        },
+        {
+            "id": 6,
+            "categoria": "Especialidades Regionales"
+        },
+        {
+            "id": 7,
+            "categoria": "Ensaladas"
+        },
+        {
+            "id": 8,
+            "categoria": "Postres"
         }
     ]
 }
