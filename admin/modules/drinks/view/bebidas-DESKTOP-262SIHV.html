@@ -16,7 +16,7 @@
 <body>
     <header class="d-flex flex-wrap justify-content-around">
         <div class="container-logo d-flex align-items-center justify-content-center"><a href="#"><img class="logo"
-                    src="../../../../assets/img/restaurant/logo-el-zarape.png" alt="Logotipo El zarape"></a></div>
+                    src="../../../../assets/img/restaurante/logo-el-zarape.png" alt="Logotipo El zarape"></a></div>
         <div class="container-navigation d-flex ">
             <ul class="navegation d-flex align-items-center">
                 <li class="navegation__item"><a class="navegation__link" href="#"><i
@@ -96,7 +96,7 @@
                 <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
-                    <button type="button" id="btn-clean-create" class="modal-footer__button btn-clean">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarCreate();">Limpiar</button>
                     <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
                         data-bs-toggle="modal">Registrar</button>
                 </div>
@@ -124,8 +124,8 @@
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
-                        <button id="btn-create" class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
-                            data-bs-toggle="modal">Sí</button>
+                        <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
+                            data-bs-toggle="modal" onclick="agregarProducto();">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-create"
                             data-bs-toggle="modal">No</button>
 
@@ -141,7 +141,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h1 class="modal-title fs-5 title" id="exampleModalToggleLabel">Actualizar Registro</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Actualizar Registro</h1>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -187,7 +187,7 @@
                         aria-label="Close">Cancelar</button>
                     <button type="button" class="modal-footer__button btn-delete" data-bs-target="#modal-preview-delete"
                         data-bs-toggle="modal">Eliminar</button>
-                    <button type="button" id="btn-clean-update" class="modal-footer__button btn-clean">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-clean" onclick="limpiarUpdate();">Limpiar</button>
                     <button class="modal-footer__button btn-modify" data-bs-target="#modal-preview-update"
                         data-bs-toggle="modal">Modificar</button>
                 </div>
@@ -208,8 +208,8 @@
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
-                        <button id="btn-update" class="modal-footer__button btn-agree" data-bs-target="#modal-preview-update"
-                            data-bs-toggle="modal">Sí</button>
+                        <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview-update"
+                            data-bs-toggle="modal" onclick="modificarProducto();">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
 
@@ -233,8 +233,8 @@
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
-                        <button id="btn-delete" class="modal-footer__button btn-agree" data-bs-target="#modal-preview-delete"
-                        data-bs-toggle="modal">Sí</button>
+                        <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview-delete "
+                        data-bs-toggle="modal" onclick="eliminarProducto();">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
 

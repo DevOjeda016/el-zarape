@@ -1,190 +1,162 @@
-let bebidas = []; // Arreglo que se llenará de bebidas JSON
-let categorias = {};
-let estatus = {};
-let indexProductosSeleccionados;
+//Get button elements
+let btnCreate = document.getElementById("btn-create");
+let btnUpdate = document.getElementById("btn-update");
+let btnDelete = document.getElementById("btn-delete");
+let cleanCreateForm = document.getElementById("btn-clean-create");
+let cleanUpdateForm = document.getElementById("btn-clean-update");
 
-function cargarDatos() {
+//Button listeners
+btnCreate.addEventListener("click", createDrink);
+btnUpdate.addEventListener("click", updateDrink);
+btnDelete.addEventListener("click", deleteDrink);
+cleanCreateForm.addEventListener("click", cleanFormCreate);
+cleanUpdateForm.addEventListener("click", cleanFormUpdate);
+
+let drinks = []; // Array created with drink JSON data
+let aCategories = {}; // Array created with categories JSON data
+let aStatus = []; // Array created with status JSON data
+let indexDrinkSelected;
+
+function loadData() {
     return Promise.all([
-        fetch("http://127.0.0.1:5500/admin/data/bebidas.json")
+        fetch("http://127.0.0.1:5500/admin/data/drinks.json")
             .then((response) => response.json())
             .then((data) => {
-                bebidas = data;
-                console.log("Bebidas cargadas:", bebidas);
+                drinks = data;
+                console.log("Bebidas cargadas:", drinks);
             }),
-        fetch("http://127.0.0.1:5500/admin/data/categorias.json")
+        fetch("http://127.0.0.1:5500/admin/data/categories.json")
             .then((response) => response.json())
             .then((data) => {
-                categorias = data;
-                console.log("Categorías cargadas:", categorias);
+                aCategories = data;
+                console.log("Categorías cargadas:", aCategories);
             }),
         fetch("http://127.0.0.1:5500/admin/data/status.json")
             .then((response) => response.json())
             .then((data) => {
-                estatus = data;
-                console.log("Estatus cargados:", estatus);
+                aStatus = data;
+                console.log("Estatus cargados:", aStatus);
             })
     ]);
 }
 
-function actualizaTabla() {
+function updateTable() {
     let cuerpo = "";
-    let categoria;
+    let category;
     let status;
 
-    bebidas.forEach(function (elemento) {
-        for (let i = 0; i < categorias["bebidas"].length; i++) {
-            if (categorias["bebidas"][i].id == elemento.categoria) {
-                categoria = categorias["bebidas"][i].categoria;
+    drinks.forEach(function (elemento) {
+        for (let i = 0; i < aCategories["bebidas"].length; i++) {
+            if (aCategories["bebidas"][i].id == elemento.category) {
+                category = aCategories["bebidas"][i].category;
                 break;
             }
         }
 
-        for (let i = 0; i < estatus.length; i++) {
-            if (estatus[i].id == elemento.estatus) {
-                status = estatus[i].status;
+        for (let i = 0; i < aStatus.length; i++) {
+            if (aStatus[i].id == elemento.status) {
+                status = aStatus[i].status;
                 break;
             }
         }
 
         let registro = '<tr>' +
-            '<tr class="table-row" data-bs-target="#modal-update" data-bs-toggle="modal" onclick="selectProducto(' + bebidas.indexOf(elemento) + ');">' +
-            '<td>' + Number(bebidas.indexOf(elemento) + 1) + '</td>' +
-            '<td>' + elemento.nombre + '</td>' +
-            '<td>' + elemento.descripcion + '</td>' +
-            '<td>' + categoria + '</td>' +
-            '<td>' + elemento.precio + '</td>' +
-            '<td><img src="' + elemento.foto + '" width="100"></td>' +
-            '<td>' + status + '</td>' +
+            '<tr class="table-row" data-bs-target="#modal-update" data-bs-toggle="modal">' +
+            '<td>' + Number(drinks.indexOf(elemento) + 1) + '</td>' +
+            '<td>' + elemento.name + '</td>' +
+            '<td>' + elemento.description + '</td>' +
+            '<td>' + category + '</td>' +
+            '<td>' + elemento.price + '</td>' +
+            '<td><img class="table__item-img" src="' + elemento.image + '" width="100"></td>' +
+            '<td>' + (status ? "Activo" : "Inactivo") + '</td>' +
             '</tr>';
         cuerpo += registro;
     });
     document.getElementById("table-bebida").innerHTML = cuerpo;
+    let rowsDrink  = document.querySelectorAll(".table-row");
+    for (let i = 0; i < rowsDrink.length; i++) {
+        rowsDrink[i].onclick = () => selectDrink(i);
+    }
 }
-
-// Función para seleccionar un producto y llenar el modal de actualización
-function selectProducto(index) {
-    let bebida = bebidas[index];
-    document.getElementById("name-drink-update").value = bebida.nombre;
-    document.getElementById("description-drink-update").value = bebida.descripcion;
-    document.getElementById("category-drink-update").value = bebida.categoria;
-    document.getElementById("price-drink-update").value = bebida.precio;
-    document.getElementById("status-drink-update").value = bebida.estatus;
-    indexProductosSeleccionados = index;
-}
-
-function limpiarUpdate() {
-    document.getElementById("name-drink-update").value = "";
-    document.getElementById("description-drink-update").value = "";
-    document.getElementById("category-drink-update").value = "0";
-    document.getElementById("price-drink-update").value = "";
-    document.getElementById("image-drink-update").value = "";
-    document.getElementById("status-drink-update").value = "0";
-}
-
-function limpiarCreate() {
-    document.getElementById("name-drink").value = "";
-    document.getElementById("description-drink").value = "";
-    document.getElementById("category-drink").value = "0";
-    document.getElementById("price-drink").value = "";
-    document.getElementById("image-drink").value = "";
-}
-
-
-
-function obtenerImagenBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        // Evento cuando la lectura se completa
-        reader.onload = function (e) {
-            resolve(e.target.result); // Retorna la cadena base64
-        };
-
-        // Evento en caso de error
-        reader.onerror = function (error) {
-            reject(error);
-        };
-
-        // Leer el archivo como una URL de datos (data URL)
-        reader.readAsDataURL(file);
-    });
-}
-
-async function modificarProducto() {
-    let nombre = document.getElementById("name-drink-update").value;
-    let descripcion = document.getElementById("description-drink-update").value;
+//En proceso
+/*function previewCreate() {
+    let name = document.getElementById("name-drink-update").value;
+    let description = document.getElementById("description-drink-update").value;
     let categoria = document.getElementById("category-drink-update").value;
-    let precio = document.getElementById("price-drink-update").value;
+    let price = document.getElementById("price-drink-update").value;
     let estatus = document.getElementById("status-drink-update").value;
     let imageDrinkUpdate = document.getElementById("image-drink-update");
+    let img = '<img src="' + 
+}*/
 
-    // Acceder al archivo seleccionado
-    let file = imageDrinkUpdate.files[0];
-    let foto = null;
-
-    if (file) {
-        try {
-            // Convertir la imagen a base64
-            foto = await obtenerImagenBase64(file);
-        } catch (error) {
-            console.error('Error al obtener la imagen en base64:', error);
-        }
-    }
-
-    selectProducto(indexProductosSeleccionados);
-    bebidas[indexProductosSeleccionados].nombre = nombre;
-    bebidas[indexProductosSeleccionados].descripcion = descripcion;
-    bebidas[indexProductosSeleccionados].precio = precio;
-    bebidas[indexProductosSeleccionados].tipo = categoria;
-    bebidas[indexProductosSeleccionados].estatus = estatus;
-    bebidas[indexProductosSeleccionados].foto = foto || bebidas[indexProductosSeleccionados].foto;
-
-    actualizaTabla();
-    selectProducto(indexProductosSeleccionados);
+// Función para seleccionar un producto y llenar el modal de actualización
+function selectDrink(index) {
+    let bebida = drinks[index];
+    document.getElementById("name-drink-update").value = bebida.name;
+    document.getElementById("description-drink-update").value = bebida.description;
+    document.getElementById("category-drink-update").value = bebida.category;
+    document.getElementById("price-drink-update").value = bebida.price;
+    document.getElementById("status-drink-update").value = bebida.status;
+    indexDrinkSelected = index;
 }
 
 
-async function agregarProducto() {
-    let nombre = document.getElementById("name-drink").value;
-    let descripcion = document.getElementById("description-drink").value;
-    let categoria = document.getElementById("category-drink").value;
-    let precio = document.getElementById("price-drink").value;
+function cleanFormCreate() {
+        document.getElementById("name-drink").value = "";
+        document.getElementById("description-drink").value = "";
+        document.getElementById("category-drink").value = "0";
+        document.getElementById("price-drink").value = "";
+        document.getElementById("image-drink").value = "";
+}
+
+function cleanFormUpdate() {
+        document.getElementById("name-drink-update").value = "";
+        document.getElementById("description-drink-update").value = "";
+        document.getElementById("category-drink-update").value = "0";
+        document.getElementById("price-drink-update").value = "";
+        document.getElementById("image-drink-update").value = "";
+        document.getElementById("status-drink-update").value = "0";
+}
+
+
+async function createDrink() {
+    let name = document.getElementById("name-drink").value;
+    let description = document.getElementById("description-drink").value;
+    let category = document.getElementById("category-drink").value;
+    let price = document.getElementById("price-drink").value;
     let imageDrinkCreate = document.getElementById("image-drink");
     // Acceder al archivo seleccionado
     let file = imageDrinkCreate.files[0];
-    let foto = null;
+    let image = null;
 
     if (file) {
         try {
+
             // Convertir la imagen a base64
-            foto = await obtenerImagenBase64(file);
+            image = await getBase64Image(file);
         } catch (error) {
             console.error('Error al obtener la imagen en base64:', error);
         }
     }
 
-    console.log(nombre, descripcion, categoria, precio, foto);
-
-    if (nombre && descripcion && categoria && precio && foto) {
+    if (name && description && category && price && image) {
         let newProd = {
-            nombre,
-            descripcion,
-            precio,
-            categoria,
-            foto,
-            estatus: "1"
+            name,
+            description,
+            price,
+            category,
+            image,
+            status: "1"
         };
-        bebidas.push(newProd);
-        console.log(JSON.stringify(bebidas));
-        limpiarCreate();
-        actualizaTabla();
-        console.log("Lo registré!");
+        drinks.push(newProd);
+        cleanFormCreate();
+        updateTable();
     } else {
         alert("Hay campos obligatorios para agregar el producto");
     }
 }
 
-function obtenerImagenBase64(file) {
+function getBase64Image(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
@@ -203,54 +175,51 @@ function obtenerImagenBase64(file) {
     });
 }
 
-async function modificarProducto() {
-    let nombre = document.getElementById("name-drink-update").value;
-    let descripcion = document.getElementById("description-drink-update").value;
-    let categoria = document.getElementById("category-drink-update").value;
-    let precio = document.getElementById("price-drink-update").value;
-    let estatus = document.getElementById("status-drink-update").value;
+async function updateDrink() {
+    let name = document.getElementById("name-drink-update").value;
+    let description = document.getElementById("description-drink-update").value;
+    let category = document.getElementById("category-drink-update").value;
+    let price = document.getElementById("price-drink-update").value;
+    let status = document.getElementById("status-drink-update").value;
     let imageDrinkUpdate = document.getElementById("image-drink-update");
 
     // Acceder al archivo seleccionado
     let file = imageDrinkUpdate.files[0];
-    let foto = null;
+    let image = null;
 
     if (file) {
         try {
             // Convertir la imagen a base64
-            foto = await obtenerImagenBase64(file);
+            image = await getBase64Image(file);
         } catch (error) {
             console.error('Error al obtener la imagen en base64:', error);
         }
     }
 
-    selectProducto(indexProductosSeleccionados);
-    bebidas[indexProductosSeleccionados].nombre = nombre;
-    bebidas[indexProductosSeleccionados].descripcion = descripcion;
-    bebidas[indexProductosSeleccionados].precio = precio;
-    bebidas[indexProductosSeleccionados].tipo = categoria;
-    bebidas[indexProductosSeleccionados].estatus = estatus;
-    bebidas[indexProductosSeleccionados].foto = foto || bebidas[indexProductosSeleccionados].foto;
+    drinks[indexDrinkSelected].name = name;
+    drinks[indexDrinkSelected].description = description;
+    drinks[indexDrinkSelected].price = price;
+    drinks[indexDrinkSelected].category = category;
+    drinks[indexDrinkSelected].status = status;
+    drinks[indexDrinkSelected].image = image || drinks[indexDrinkSelected].image;
+    updateTable();
 
-    actualizaTabla();
-    selectProducto(indexProductosSeleccionados);
 }
 
 
-function eliminarProducto() {
+function deleteDrink() {
     let nuevoArreglo = [];
-    let elementoSeleccionado = bebidas[indexProductosSeleccionados];
-    bebidas.forEach(function (elemento) {
+    let elementoSeleccionado = drinks[indexDrinkSelected];
+    drinks.forEach(function (elemento) {
         if (elemento != elementoSeleccionado) {
             nuevoArreglo.push(elemento);
         }
     });
-    bebidas = nuevoArreglo;
-    limpiarUpdate();
-    actualizaTabla();
+    drinks = nuevoArreglo;
+    updateTable();
 }
 
 // Cargar los datos y luego actualizar la tabla
-cargarDatos().then(() => {
-    actualizaTabla();
+loadData().then(() => {
+    updateTable();
 });

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../assets/css/index.css">
+    <link rel="stylesheet" href="../../../../assets/css/index-admin.css">
+    <link rel="stylesheet" href="../../../../assets/css/modal.css">
+    <script src="https://kit.fontawesome.com/7348c59eb0.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="d-flex flex-wrap justify-content-around">
+        <div class="container-logo d-flex align-items-center justify-content-center"><a href="#"><img class="logo"src="../../../../assets/img/restaurante/logo-el-zarape.png" alt="Logotipo El zarape"></a></div>
+        <div class="container-navigation d-flex ">
+            <ul class="navegation d-flex align-items-center">
+                <li class="navegation__item"><a class="navegation__link" href="#"><i
+                            class="navegation__icon fa-regular fa-user"></i></a></li>
+                </li>
+                <li class="navegation__item"><a class="navegation__link" href="#"><i
+                            class="navegation__icon fa-solid fa-right-from-bracket"></i></a></li>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="content container">
+        <h1 class="content__element title display-2 text-center">Combos</h1>
+        <div class="content__element container-button container-fluid d-flex justify-content-center">
+            <button class="button-create style-text" data-bs-target="#modal-create" data-bs-toggle="modal">Crear nuevo registro</button>
+            <button class="button-create style-text" data-bs-toggle="modal" onclick="toggleSearchFields()">Buscar</button></div>
+        </div>
+        <div class="search-container">
+            <div id="search-fields" style="display: none;">
+                <div class="mb-3">
+                    <label for="search-name" class="form-label">Nombre del Combo:</label>
+                    <input type="text" class="form-control" id="search-name" oninput="searchCombos()">
+                </div>
+                <div class="mb-3">
+                    <label for="search-alimentos" class="form-label">Alimentos:</label>
+                    <input type="text" class="form-control" id="search-alimentos" oninput="searchCombos()">
+                </div>
+                <div class="mb-3">
+                    <label for="search-bebidas" class="form-label">Bebidas:</label>
+                    <input type="text" class="form-control" id="search-bebidas" oninput="searchCombos()">
+                </div>
+            </div>
+        </div>
+            </div>
+        <div class="content__element container-fluid">
+            <div class="container-table table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-head">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre del Combo</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Alimento</th>
+                            <th scope="col">Bebida</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Estatus</th>
+                        </tr>                       
+                    </thead>
+                    <tbody id="combo-table-body">
+                        <!-- filas dinamicas js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- Modal CRUD to manage the components -->
+    <!--Modal to create new register-->
+    <div class="modal fade modal-lg modal-dialog-scrollable" id="modal-create" aria-hidden="true" aria-labelledby="modal-create" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Crea Combo</h1>
+                </div>
+<div class="modal-body">
+    <form id="create-combo-form">
+        <div class="mb-3">
+            <label for="combo-name" class="col-form-label">Nombre del Combo:</label>
+            <input type="text" class="form-control" id="combo-name" required>
+        </div>
+        <div class="mb-3">
+            <label for="combo-description" class="col-form-label">Descripción:</label>
+            <textarea class="form-control" id="combo-description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="combo-alimentos" class="col-form-label">Selecciona Alimentos:</label>
+            <select class="form-select form-select-sm p-2" id="combo-alimentos" required>
+                <option value="0" disabled selected>Selecciona una opción...</option>
+                <!-- Opciones  -->
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="combo-bebidas" class="col-form-label">Selecciona Bebidas:</label>
+            <div id="combo-bebidas-container" multiple required>
+                <option value="0" >Selecciona una opción...</option>
+                <!-- Opciones -->
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="combo-price" class="col-form-label">Precio:</label>
+            <input type="number" class="form-control" id="combo-price" required>
+        </div>
+        <div class="mb-3">
+            <label for="combo-image" class="col-form-label">Imagen:</label>
+            <input type="file" class="form-control" id="combo-image" accept="image/*" required>
+        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
+                    <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="button" class="modal-footer__button btn-clean" onclick="resetCreateForm()">Limpiar</button>
+                    <button type="button" class="modal-footer__button btn-agree" onclick="createCombo()">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal to view preview -->
+<div class="modal fade modal-lg" id="modal-preview-update" aria-hidden="true" aria-labelledby="modal-preview-update" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="modal-preview-update-label">Registrar</h1>
+            </div>
+            <div class="modal-body">
+                <p id="preview-update-info">Aquí aparecerá la información del combo.</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center flex-column">
+                <p>¿Desea realizar la acción?</p>
+                <div class="footer-buttons">
+                    <button class="modal-footer__button btn-agree" onclick="confirmUpdateCombo()">Sí</button>
+                    <button class="modal-footer__button btn-delete" data-bs-dismiss="modal" aria-label="Close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+    <!--Modal to update register-->
+    <div class="modal fade modal-lg modal-dialog-scrollable" id="modal-update" aria-hidden="true"
+        aria-labelledby="modal-update" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modificar Combo</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="update-combo-form">
+                        <div class="mb-3">
+                            <label for="update-combo-id" class="col-form-label">#:</label>
+                            <input type="text" class="form-control" id="update-combo-id" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-name" class="col-form-label">Nombre del Combo:</label>
+                            <input type="text" class="form-control" id="update-combo-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-description" class="col-form-label">Descripción:</label>
+                            <textarea class="form-control" id="update-combo-description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-alimentos" class="col-form-label">Selecciona Alimentos:</label>
+                            <select class="form-select form-select-sm p-2" id="update-combo-alimentos" required>
+                                <!-- Opciones  -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-bebidas" class="col-form-label">Selecciona Bebidas:</label>
+                            <select class="form-select form-select-sm p-2" id="update-combo-bebidas" required>
+                                <!-- Opciones -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-price" class="col-form-label">Precio:</label>
+                            <input type="number" class="form-control" id="update-combo-price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-image" class="col-form-label">Imagen del Combo:</label>
+                            <input type="file" class="form-control" id="update-combo-image" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-combo-status" class="col-form-label">Estatus:</label>
+                            <select class="form-select form-select-sm p-2" id="update-combo-status">
+                                <option value="0">Selecciona una opcion...</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
+                            <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"aria-label="Close">Cancelar</button>
+                            <button type="button" class="modal-footer__button btn-delete" onclick="deleteCombo()">Eliminar</button>
+                            <button type="button" class="modal-footer__button btn-clean" onclick="resetUpdateForm()">Limpiar</button>
+                            <button type="button" class="modal-footer__button btn-modify" onclick="updateCombo()">Modificar</button>
+                        </div>
+<!-- Modal to view preview -->
+<div class="modal fade modal-lg" id="modal-preview" aria-hidden="true" aria-labelledby="modal-preview" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="modal-preview-label">Eliminar</h1>
+            </div>
+            <div class="modal-body">
+                <p id="preview-info">Aquí aparecerá la información del combo.</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center flex-column">
+                <p>¿Desea realizar la acción?</p>
+                <div class="footer-buttons">
+                    <button class="modal-footer__button btn-agree" onclick="confirmDeleteCombo()">Sí</button>
+                    <button class="modal-footer__button btn-delete" data-bs-dismiss="modal" aria-label="Close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="confirm-delete-id">
+<!-- Modal to view preview -->
+<div class="modal fade modal-lg" id="modal-preview-update" aria-hidden="true" aria-labelledby="modal-preview-update" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="modal-preview-update-label">Modificar</h1>
+            </div>
+            <div class="modal-body">
+                <p id="preview-update-info">Aquí aparecerá la información del combo.</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center flex-column">
+                <p>¿Desea realizar la acción?</p>
+                <div class="footer-buttons">
+                    <button class="modal-footer__button btn-agree" onclick="confirmUpdateCombo()">Sí</button>
+                    <button class="modal-footer__button btn-delete" data-bs-dismiss="modal" aria-label="Close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<input type="hidden" id="confirm-update-id">
+    <!--JS Bootstrap-->
+    <script src="../../../../assets/js/bootstrap.min.js"></script>
+    <script src="../../../modules/combos/controller/combo_prueba.js"></script>
+</body>
+</html>

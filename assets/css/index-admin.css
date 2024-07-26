@@ -102,3 +102,9 @@ header {
 .table-row:hover {
     cursor: pointer;
 }
+
+.table__item-img {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}

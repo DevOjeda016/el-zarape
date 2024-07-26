@@ -8,6 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/login.css" rel="stylesheet">
+    <link href="assets/css/index.css" rel="stylesheet">
+    <link href="assets/css/index-admin.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7348c59eb0.js" crossorigin="anonymous"></script>
+
     <style>
         .container-login {
             display: flex;
@@ -51,37 +55,53 @@
             border-color: #ff7a40;
         }
 
+        .container-main-login {
+            padding: 0;
+            margin: 0;
+        }
+
         @media screen and (max-width: 768px) {
             .container-login .left {
                 display: none;
+                width: 100%;
             }
+
+            .container-login .right {
+                width: 100%;
+            }
+
+            .container-form {
+                align-items: center !important;
+            }
+
         }
     </style>
 </head>
-
+ 
 <body>
-    <div class="container-fluid container-login">
+    <div class="container-main-login container-login">
         <div class="left">
-            <img src="assets/img/logo-el-zarape.png" alt="El Zarape Logo">
+            <img src="assets/img/restaurante/logo-el-zarape.png" alt="El Zarape Logo">
         </div>
         <div class="right d-flex flex-column justify-content-center">
-            <div class="container">
-                <h2>Iniciar Sesión</h2>
+            <div class="container-form container d-flex flex-column">
+                <h1 class="title">Iniciar Sesión</h1>
                 <form>
-                    <div class="form-group">
-                        <label for="username">Usuario</label>
+                    <div class="form-group mb-3">
+                        <label for="username" class="col-form-label">Usuario</label>
                         <input type="text" class="form-control" id="username"
                             placeholder="usuario o correo electrónico">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
+                    <div class="form-group mb-3">
+                        <label for="password" class="col-form-label">Contraseña</label>
                         <input type="password" class="form-control" id="password" placeholder="********">
                     </div>
-                    <div class="form-group">
-                        <a href="#">Olvidó su contraseña?</a>
+                    <div class="form-group mb-3">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                    <button type="button" class="btn btn-secondary btn-block">Regresar al inicio</button>
+                    <div class="form-group mb-3">
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        <button type="button" class="btn btn-secondary btn-block">Regresar al inicio</button>
+                    </div>
                 </form>
             </div>
         </div>

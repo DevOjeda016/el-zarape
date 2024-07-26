@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../assets/css/index.css">
-    <link rel="stylesheet" href="../../../../../assets/css/index-admin.css">
-    <link rel="stylesheet" href="../../../../../assets/css/modal.css">
+    <link rel="stylesheet" href="../../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../assets/css/index.css">
+    <link rel="stylesheet" href="../../../../assets/css/index-admin.css">
+    <link rel="stylesheet" href="../../../../assets/css/modal.css">
     <script src="https://kit.fontawesome.com/7348c59eb0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -29,7 +28,7 @@
         </div>
     </header>
     <main class="content container">
-        <h1 class="content__element title display-2 text-center">Bebidas</h1>
+        <h1 class="content__element title display-2 text-center">Alimentos</h1>
         <div class="content__element container-button container-fluid d-flex justify-content-center">
             <button class="button-create style-text" data-bs-target="#modal-create" data-bs-toggle="modal">Crear nuevo
                 registro</button>
@@ -48,7 +47,7 @@
                             <th scope="col">Estatus</th>
                         </tr>
                     </thead>
-                    <tbody id="table-bebida">
+                    <tbody id="table-alimento">
                     </tbody>
                 </table>
 
@@ -63,33 +62,33 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h1 class="modal-title fs-5 title" id="exampleModalToggleLabel">Crear nuevo regristo</h1>
+                    <h1 class="modal-title fs-5 title" id="exampleModalToggleLabel">Crear nuevo registro</h1>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="name-drink" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name-drink">
+                            <label for="name-meal" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name-meal">
                         </div>
                         <div class="mb-3">
-                            <label for="description-drink" class="col-for">Descripción</label>
-                            <input type="text" class="form-control" id="description-drink">
+                            <label for="description-meal" class="col-form-label">Descripción:</label>
+                            <input type="text" class="form-control" id="description-meal">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="category-drink">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink">
+                            <label class="form-label" for="category-meal">Categoria:</label>
+                            <select class="form-select form-select-sm p-2" id="category-meal">
                                 <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Jugos</option>
-                                <option value="2">Refrescos</option>
+                                <option value="1">Desayuno</option>
+                                <option value="2">Comida</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="price-drink" class="col-form-label">Precio</label>
-                            <input type="number" class="form-control" id="price-drink">
+                            <label for="price-meal" class="col-form-label">Precio:</label>
+                            <input type="number" class="form-control" id="price-meal">
                         </div>
                         <div class="mb-3">
-                            <label for="image-drink" class="col-form-label">Imagen</label>
-                            <input type="file" class="form-control" id="image-drink">
+                            <label for="image-meal" class="col-form-label">Imagen:</label>
+                            <input type="file" class="form-control" id="image-meal">
                         </div>
                     </form>
                 </div>
@@ -112,14 +111,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal preview</h1>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-body">
-                        <div class="container-fuid d-flex flex-wrap">
-                            <div class="container-data-left">
-                            </div>
-                            <div class="container-data-right">
-                            </div>
-                        </div>
-                    </div>
+                    Aqui aparecerá la info (texto remplazable).
                 </div>
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
@@ -128,7 +120,7 @@
                             data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-create"
                             data-bs-toggle="modal">No</button>
-
+                        
                     </div>
                 </div>
             </div>
@@ -137,7 +129,7 @@
 
     <!--Modal to update register-->
     <div class="modal fade modal-lg modal-dialog-scrollable" id="modal-update" aria-hidden="true"
-        aria-labelledby="modal-update" tabindex="-1">
+        aria-labelledby="modal-create" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
@@ -146,40 +138,37 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="name-drink-update" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name-drink-update">
+                            <label for="name-meal-update" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name-meal-update">
                         </div>
                         <div class="mb-3">
-                            <label for="description-drink-update" class="col-form-label">Descripción</label>
-                            <input type="text" class="form-control" id="description-drink-update">
+                            <label for="description-meal-update" class="col-form-label">Descripción:</label>
+                            <input type="text" class="form-control" id="description-meal-update">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="category-drink-update">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink-update">
+                            <label class="form-label" for="category-meal-update">Categoria</label>
+                            <select class="form-select form-select-sm p-2" id="category-meal-update">
                                 <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Jugos</option>
-                                <option value="2">Refrescos</option>
-                                <option value="3">Bebidas calientes</option>
-                                <option value="4">Bebidas frias</option>
-                                <option value="5">Bebidas embriagantes</option>
+                                <option value="1">Desayuno</option>
+                                <option value="2">Comida</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="price-drink-update" class="col-form-label">Precio</label>
-                            <input type="number" class="form-control" id="price-drink-update">
+                            <label for="price-meal-update" class="col-form-label">Precio:</label>
+                            <input type="number" class="form-control" id="price-meal-update">
                         </div>
                         <div class="mb-3">
-                            <label for="image-drink-update" class="col-form-label">Imagen</label>
-                            <input type="file" class="form-control" id="image-drink-update">
+                            <label for="image-meal-update" class="col-form-label">Imagen:</label>
+                            <input type="file" class="form-control" id="image-meal-update">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label-update" for="status-drink-update">Estatus</label>
-                            <select class="form-select form-select-sm p-2" id="status-drink-update">
+                            <label class="form-label" for="status-meal-update">Estatus</label>
+                            <select class="form-select form-select-sm w-50 p-2" id="status-meal-update">
                                 <option value="0">Selecciona una opcion...</option>
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option>
                             </select>
-                        </div>
+                        </div>                      
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
@@ -228,12 +217,17 @@
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal preview</h1>
                 </div>
                 <div class="modal-body">
-                    Aqui aparecerá la info (texto remplazable).
+                    <div class="container-fuid d-flex flex-wrap">
+                        <div class="container-data-left">
+                        </div>
+                        <div class="container-data-right">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
                     <div class="footer-buttons">
-                        <button id="btn-delete" class="modal-footer__button btn-agree" data-bs-target="#modal-preview-delete"
+                        <button id="btn-delete" class="modal-footer__button btn-agree" data-bs-target="#modal-preview-delete "
                         data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
@@ -243,10 +237,9 @@
             </div>
         </div>
     </div>
-    
     <!--JS Bootstrap-->
+    <script src="../controller/tmp-alimentos.js"></script>
     <script src="../../../../assets/js/bootstrap.min.js"></script>
-    <script src="../controller/bebidas.js"></script>
 </body>
 
 </html>

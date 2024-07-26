@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Daniel",
+        "lastname": "Ojeda Luna",
+        "phone": "4772356345",
+        "sucu": "Sucursal 1",
+        "user": "Dev_Ojeda",
+        "password": "dani_ojeda",
+        "status": true
+    },
+
+    {
+        "name": "Cesar",
+        "lastname": "Bernal Cruz",
+        "phone": "4770374528",
+        "sucu": "Sucursal 2",
+        "user": "Trasher_rk",
+        "password": "cesar_bernal",
+        "status": true
+    },
+
+    {
+        "name": "Mozart Jorge A.",
+        "lastname": "Padilla Velázquez",
+        "phone": "4721800759",
+        "sucu": "Sucursal 3",
+        "user": "MozartXD22",
+        "password": "mozart_padilla",
+        "status": true
+    }
+]

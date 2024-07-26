@@ -95,3 +95,18 @@
     justify-content: center;
     gap: 10px;
 }
+
+#combo-bebidas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* ajusta el tamaño  de las columna */
+    gap: 10px; /* espacio entre cada checkbox */
+}
+
+#combo-bebidas-container label {
+    display: flex;
+    align-items: center;
+}
+
+#combo-bebidas-container input[type="checkbox"] {
+    margin-right: 10px; /* espacio entre el checkbox y el texto */
+}
