@@ -66,30 +66,26 @@
                     <h1 class="modal-title fs-5 title" id="exampleModalToggleLabel">Crear nuevo regristo</h1>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="form-create-drink">
                         <div class="mb-3">
                             <label for="name-drink" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name-drink">
+                            <input type="text" class="form-control" id="name-drink" required>
                         </div>
                         <div class="mb-3">
                             <label for="description-drink" class="col-for">Descripción</label>
-                            <input type="text" class="form-control" id="description-drink">
+                            <input type="text" class="form-control" id="description-drink" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="category-drink">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink">
-                                <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Jugos</option>
-                                <option value="2">Refrescos</option>
-                            </select>
+                            <select class="form-select form-select-sm p-2 select-categories" id="category-drink" required></select>
                         </div>
                         <div class="mb-3">
                             <label for="price-drink" class="col-form-label">Precio</label>
-                            <input type="number" class="form-control" id="price-drink">
+                            <input type="number" class="form-control" id="price-drink" required>
                         </div>
                         <div class="mb-3">
                             <label for="image-drink" class="col-form-label">Imagen</label>
-                            <input type="file" class="form-control" id="image-drink">
+                            <input type="file" class="form-control" id="image-drink" required>
                         </div>
                     </form>
                 </div>
@@ -97,12 +93,13 @@
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
                     <button type="button" id="btn-clean-create" class="modal-footer__button btn-clean">Limpiar</button>
-                    <button class="modal-footer__button btn-agree" data-bs-target="#modal-preview"
-                        data-bs-toggle="modal">Registrar</button>
+                    <button type="button" id="btn-preview-create" class="modal-footer__button btn-agree">Registrar</button>
                 </div>
             </div>
         </div>
     </div>
+
+
     <!--Modal to view preview-->
     <div class="modal fade modal-lg" id="modal-preview" aria-hidden="true" aria-labelledby="modal-preview"
         tabindex="-1">
@@ -112,12 +109,10 @@
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal preview</h1>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-body">
-                        <div class="container-fuid d-flex flex-wrap">
-                            <div class="container-data-left">
-                            </div>
-                            <div class="container-data-right">
-                            </div>
+                    <div class="container-fuid d-flex flex-wrap justify-content-evenly">
+                        <div id="img-preview-create">
+                        </div>
+                        <div id="data-preview-create">
                         </div>
                     </div>
                 </div>
@@ -144,40 +139,31 @@
                     <h1 class="modal-title fs-5 title" id="exampleModalToggleLabel">Actualizar Registro</h1>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="form-update-drink">
                         <div class="mb-3">
                             <label for="name-drink-update" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name-drink-update">
+                            <input type="text" class="form-control" id="name-drink-update" required>
                         </div>
                         <div class="mb-3">
                             <label for="description-drink-update" class="col-form-label">Descripción</label>
-                            <input type="text" class="form-control" id="description-drink-update">
+                            <input type="text" class="form-control" id="description-drink-update" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="category-drink-update">Categoria</label>
-                            <select class="form-select form-select-sm p-2" id="category-drink-update">
-                                <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Jugos</option>
-                                <option value="2">Refrescos</option>
-                                <option value="3">Bebidas calientes</option>
-                                <option value="4">Bebidas frias</option>
-                                <option value="5">Bebidas embriagantes</option>
-                            </select>
+                            <select class="form-select form-select-sm p-2 select-categories" id="category-drink-update" required></select>
                         </div>
                         <div class="mb-3">
                             <label for="price-drink-update" class="col-form-label">Precio</label>
-                            <input type="number" class="form-control" id="price-drink-update">
+                            <input type="number" class="form-control" id="price-drink-update" required>
                         </div>
                         <div class="mb-3">
-                            <label for="image-drink-update" class="col-form-label">Imagen</label>
+                            <label for="image-drink-update"  class="col-form-label">Imagen</label>
                             <input type="file" class="form-control" id="image-drink-update">
+                            <p id="p-current-image"></p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label-update" for="status-drink-update">Estatus</label>
-                            <select class="form-select form-select-sm p-2" id="status-drink-update">
-                                <option value="0">Selecciona una opcion...</option>
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option>
+                            <select class="form-select form-select-sm p-2" id="status-drink-update" required>
                             </select>
                         </div>
                     </form>
@@ -185,15 +171,15 @@
                 <div class="modal-footer d-flex justify-content-evenly flex-wrap-reverse">
                     <button type="button" class="modal-footer__button btn-cancel" data-bs-dismiss="modal"
                         aria-label="Close">Cancelar</button>
-                    <button type="button" class="modal-footer__button btn-delete" data-bs-target="#modal-preview-delete"
-                        data-bs-toggle="modal">Eliminar</button>
+                    <button type="button" id="btn-preview-delete" class="modal-footer__button btn-delete">Eliminar</button>
                     <button type="button" id="btn-clean-update" class="modal-footer__button btn-clean">Limpiar</button>
-                    <button class="modal-footer__button btn-modify" data-bs-target="#modal-preview-update"
-                        data-bs-toggle="modal">Modificar</button>
+                    <button type="button" id="btn-preview-update" class="modal-footer__button btn-modify">Modificar</button>
                 </div>
             </div>
         </div>
     </div>
+
+
     <!--Modal to view preview update-->
     <div class="modal fade modal-lg" id="modal-preview-update" aria-hidden="true" aria-labelledby="modal-preview"
         tabindex="-1">
@@ -203,7 +189,12 @@
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal preview</h1>
                 </div>
                 <div class="modal-body">
-                    Aqui aparecerá la info (texto remplazable).
+                    <div class="container-fuid d-flex flex-wrap justify-content-evenly">
+                        <div id="img-preview-update">
+                        </div>
+                        <div id="data-preview-update">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
@@ -212,12 +203,13 @@
                             data-bs-toggle="modal">Sí</button>
                         <button class="modal-footer__button btn-delete" data-bs-target="#modal-update"
                             data-bs-toggle="modal">No</button>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!--Modal to view preview delete-->
     <div class="modal fade modal-lg" id="modal-preview-delete" aria-hidden="true" aria-labelledby="modal-preview"
@@ -228,7 +220,12 @@
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal preview</h1>
                 </div>
                 <div class="modal-body">
-                    Aqui aparecerá la info (texto remplazable).
+                    <div class="container-fuid d-flex flex-wrap justify-content-evenly align-items-center gap-4">
+                        <div id="img-preview-delete">
+                        </div>
+                        <div id="data-preview-delete">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center flex-column ">
                     <p>¿Desea realizar la acción?</p>
@@ -244,9 +241,12 @@
         </div>
     </div>
     
+    
     <!--JS Bootstrap-->
     <script src="../../../../assets/js/bootstrap.min.js"></script>
     <script src="../controller/bebidas.js"></script>
+    <!--JS Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
-</html>
+</html> 
