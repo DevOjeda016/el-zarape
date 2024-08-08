@@ -86,6 +86,7 @@ async function getCreateFormElements() {
     let category = document.getElementById("category-drink").value;
     let price = document.getElementById("price-drink").value;
     let imageDrinkCreate = document.getElementById("image-drink");
+    
     let file = imageDrinkCreate.files[0];
     let image = null;
     let imageName = null;
@@ -106,7 +107,7 @@ async function getCreateFormElements() {
             price,
             category,
             image,
-            imageName, // Guardar el nombre del archivo
+            imageName, 
             status: 1
         };
         return newDrink;
@@ -130,6 +131,7 @@ async function getUpdateFormElements() {
         try {
             image = await getBase64Image(file);
             imageName = file.name; // Obtener el nombre del archivo
+            console.log(imageName);
         } catch (error) {
             console.error('Error al obtener la imagen en base64:', error);
         }
@@ -153,9 +155,7 @@ async function getUpdateFormElements() {
 
 
 
-//modified
 
-// Función para seleccionar un producto y llenar el modal de actualización
 function selectDrink(index) {
     let bebida = drinks[index];
     document.getElementById("name-drink-update").value = bebida.name;
@@ -187,7 +187,6 @@ function cleanFormUpdate() {
 }
 
 
-//Create preview Create
 document.getElementById("btn-preview-create").addEventListener("click", previewCreate);
 
 async function previewCreate() {
@@ -263,7 +262,7 @@ function previewDelete() {
         $('#modal-preview-delete').modal('show');
 }
 
-//Create preview Update
+
 document.getElementById("btn-preview-update").addEventListener("click", previewUpdate);
 
 async function previewUpdate() {

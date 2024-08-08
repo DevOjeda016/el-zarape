@@ -73,6 +73,7 @@ header {
     background-color: var(--primary-color);
     border: 0;
     color: #fff;
+    /*border-color: var(--primary-color);*/
 }
 
 
